@@ -56,17 +56,34 @@ You can iterate through the elements of an array using loops like `for` and `for
 
 Arrays in TypeScript provide a convenient way to work with collections of data, and understanding how to declare, access, and manipulate arrays is a fundamental skill for any TypeScript developer.
 
-
 ######################################_Coding_Question_#################################################
 
 # Question 1: Sum of Array Elements
- `👉Write a TypeScript function that takes an array of numbers as input and returns the sum of all the elements in the array`.
+
+`👉Write a TypeScript function that takes an array of numbers as input and returns the sum of all the elements in the array`.
+
+```typescript
+const ArrayNumber: number[] = [1, 4, 5, 6, 7, 8];
+
+const SumOfArrayNumber = (array: number[]): number => {
+  var sum: number = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum = sum + array[i];
+  }
+  return sum;
+};
+
+console.log(SumOfArrayNumber(ArrayNumber));
+```
 
 # Question 2: Find Maximum Element
+
 ` Write a TypeScript function that finds and returns the maximum element in an array of numbers`
 
 # Question 3: Remove Duplicates
- `Write a TypeScript function that removes duplicates from an array and returns a new array with unique elements`
+
+`Write a TypeScript function that removes duplicates from an array and returns a new array with unique elements`
 
 # Question 4: Array Intersection
- `Write a TypeScript function that takes two arrays and returns a new array containing the elements that are common to both input arrays`
+
+`Write a TypeScript function that takes two arrays and returns a new array containing the elements that are common to both input arrays`

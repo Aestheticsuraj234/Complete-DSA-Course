@@ -33,6 +33,21 @@ fruits[2] = "strawberry"; // Changes the third element to "strawberry"
 // Question 1: Sum of Array Elements
 // 👉Write a TypeScript function that takes an array of numbers as input and returns the sum of all the elements in the array.
 
+const ArrayNumber:number[] = [1,4,5,6,7,8];
+
+const SumOfArrayNumber =  (array:number[]):number=>{
+    var sum:number = 0;
+    for(let i=0;i<array.length;i++){
+        sum = sum + array[i];
+    }
+    return sum;
+
+}
+
+console.log(SumOfArrayNumber(ArrayNumber))
+
+
+
 // Question 2: Find Maximum Element
 // Write a TypeScript function that finds and returns the maximum element in an array of numbers
 
