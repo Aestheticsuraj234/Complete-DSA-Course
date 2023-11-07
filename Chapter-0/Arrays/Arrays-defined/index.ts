@@ -76,3 +76,21 @@ console.log(RemoveDuplicates(DuplicateArray));
 
 // Question 4: Array Intersection
 // Write a TypeScript function that takes two arrays and returns a new array containing the elements that are common to both input arrays.
+
+const Array1: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+const Array2: number[] = [2, 4, 6, 8, 10, 12, 14, 16];
+
+const ArrayIntersect = (array1:number[] , array2:number[]):number[]=>{
+    const IntersectedArray:number[] = [];
+    for(let i=0;i<array1.length;i++){
+        if(Array2.indexOf(array1[i])!=-1){
+            IntersectedArray.push(array1[i]);
+        }
+    }
+    return IntersectedArray;
+
+
+   
+}
+
+console.log(ArrayIntersect(Array1,Array2));
