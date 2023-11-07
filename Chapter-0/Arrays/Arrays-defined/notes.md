@@ -100,6 +100,22 @@ console.log(FindMaxElement(NumberArr));
 
 `Write a TypeScript function that removes duplicates from an array and returns a new array with unique elements`
 
+```typescript
+const DuplicateArray: number[] = [1, 1, 2, 2, 3, 3, 44, 44, 56, 78, 56];
+
+const RemoveDuplicates = (array: number[]): number[] => {
+  let UniqueArray: number[] = [];
+  for (let i = 0; i < array.length; i++) {
+    if (UniqueArray.indexOf(array[i]) == -1) {
+      UniqueArray.push(array[i]);
+    }
+  }
+  return UniqueArray;
+};
+
+console.log(RemoveDuplicates(DuplicateArray));
+```
+
 # Question 4: Array Intersection
 
 `Write a TypeScript function that takes two arrays and returns a new array containing the elements that are common to both input arrays`
