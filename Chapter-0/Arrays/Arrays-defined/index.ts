@@ -50,6 +50,20 @@ console.log(SumOfArrayNumber(ArrayNumber))
 
 // Question 2: Find Maximum Element
 // Write a TypeScript function that finds and returns the maximum element in an array of numbers
+const NumberArr:number[] = [1,4,5,6,7,8,11,17,9];
+
+const FindMaxElement = (array:number[]):number=>{
+    let MaxElement:number = 0;
+    for(let i=0;i<array.length;i++){
+      
+        if(array[i]>MaxElement){
+            MaxElement = array[i]
+        }
+    }
+    return MaxElement;
+}
+
+console.log(FindMaxElement(NumberArr));
 
 // Question 3: Remove Duplicates
 // Write a TypeScript function that removes duplicates from an array and returns a new array with unique elements
