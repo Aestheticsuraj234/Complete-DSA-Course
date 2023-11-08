@@ -66,7 +66,9 @@
 
 # Exercise Stack📚
 
-Certainly! Here are the exercises converted into Markdown format:
+Certainly! Here are the exercises :
+
+## Easy
 
 1. **Exercise 1:** Implement a stack class in TypeScript with the following methods: `push`, `pop`, `peek`, `isEmpty`, and `size`.
 
@@ -87,5 +89,10 @@ Certainly! Here are the exercises converted into Markdown format:
 9. **Exercise 9:** Implement a stack-based algorithm to evaluate a postfix arithmetic expression (also known as Reverse Polish Notation).
 
 10. **Exercise 10:** Design and implement a stack-based solution to solve a real-world problem of your choice. For example, you can simulate a simple text editor's undo/redo functionality using two stacks.
+
+## Intermediate
+
+## Hard
+
 
 Feel free to use this Markdown format for the exercises in your book. You can include explanations, code examples, and solutions for each exercise as you proceed with your writing.
