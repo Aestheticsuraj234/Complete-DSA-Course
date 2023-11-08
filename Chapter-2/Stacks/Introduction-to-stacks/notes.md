@@ -49,6 +49,7 @@ class Stack {
      public isEmpty():boolean{
         return this.data.length === 0;
      }
+}
 
     // 2. Parsing an arithmetic expression:
 
@@ -123,6 +124,5 @@ function depthFirstSearch(
 }
 
 
-}
 
 ```
