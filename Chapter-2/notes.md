@@ -2,15 +2,15 @@
 
 ## Sub-Chapter 1: Introduction to Stacks
 
-- 1.1 What is a Stack?
-- 1.2 How Stacks Work
-- 1.3 Common Use Cases
+- 1.1 What is a Stack?🥙✅
+- 1.2 How Stacks Work✅
+- 1.3 Common Use Cases✅
 
 ## Sub-Chapter  2: Implementing Stacks in TypeScript
 
-- 2.1 Stack Data Structure
-- 2.2 Operations on Stacks
-- 2.3 Creating a Stack in TypeScript
+- 2.1 Stack Data Structure✅
+- 2.2 Operations on Stacks✅
+- 2.3 Creating a Stack in TypeScript✅
 
 ## Sub-Chapter 3: Basic Stack Operations
 
