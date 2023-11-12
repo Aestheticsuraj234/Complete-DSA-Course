@@ -137,3 +137,70 @@ const infixExpression = "3 + 4 * 5 ^ 2 / 7 - 1 ^ 3 ^ 4";
 const postfixExpression = infixToPostfix(infixExpression);
 const result = evaluatePostfix(postfixExpression);
 console.log(`Result of ${infixExpression} is ${result}`);
+
+
+
+// *Function Call Stack
+
+function factorial(n: number): number {
+    if (n <= 1) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  }
+  
+  const result1 = factorial(0);
+  console.log(`Factorial of 0 is ${result1}`);
+
+ 
+//   *N-Queens Problem
+
+class NQueens {
+    private solutions: number[][] = [];
+  
+    solveNQueens(n: number): number[][] {
+      this.solutions = [];
+      this.placeQueens(n, 0, []);
+      return this.solutions;
+    }
+  
+    private placeQueens(n: number, row: number, currentPlacement: number[]): void {
+      if (row === n) {
+        // All queens are placed successfully
+        this.solutions.push([...currentPlacement]);
+        return;
+      }
+  
+      for (let col = 0; col < n; col++) {
+        if (this.isSafe(row, col, currentPlacement)) {
+          currentPlacement.push(col);
+          this.placeQueens(n, row + 1, currentPlacement);
+          currentPlacement.pop();
+        }
+      }
+    }
+  
+    private isSafe(row: number, col: number, placement: number[]): boolean {
+      for (let prevRow = 0; prevRow < row; prevRow++) {
+        const prevCol = placement[prevRow];
+  
+        // Check if queens threaten each other
+        if (
+          prevCol === col ||                    // Same column
+          prevCol - prevRow === col - row ||    // Same diagonal (left to right)
+          prevCol + prevRow === col + row       // Same diagonal (right to left)
+        ) {
+          return false;
+        }
+      }
+  
+      return true;
+    }
+  }
+  
+  // Example usage
+  const nQueens = new NQueens();
+  const solutions = nQueens.solveNQueens(10);
+  console.log("Solutions for 4-Queens Problem:", solutions);
+ 

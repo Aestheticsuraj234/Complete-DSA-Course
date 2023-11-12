@@ -270,3 +270,120 @@ In this example:
 4. The rest of the stack frames are popped in reverse order, and the final result is printed.
 
 These examples demonstrate how the Function Call Stack works in TypeScript, managing function calls, local variables, and control flow during program execution.
+
+
+## Backtracking Algorithm
+
+### Introduction 
+
+Backtracking is a general algorithm for finding all (or some) solutions to computational problems, particularly constraint satisfaction problems. It incrementally builds candidates for solutions and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly be completed to a valid solution.
+
+
+### Key Concepts
+
+1. **Candidate:**
+    * A potential solution to the problem at a certain stage of the algorithm.
+
+2. **Constraint:**
+    * A condition that must be satisfied by the candidates to be considered valid.
+
+3. **Decision Space:**
+    * The set of all possible candidates at a given stage.
+
+4. **Search Space:**
+    * The entire space of all possible candidates and their combinations.
+
+
+# Backtracking Algorithm
+
+## Introduction
+
+Backtracking is a general algorithm for finding all (or some) solutions to computational problems, particularly constraint satisfaction problems. It incrementally builds candidates for solutions and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly be completed to a valid solution.
+
+## Key Concepts
+
+1. **Candidate:**
+   - A potential solution to the problem at a certain stage of the algorithm.
+
+2. **Constraint:**
+   - A condition that must be satisfied by the candidates to be considered valid.
+
+3. **Decision Space:**
+   - The set of all possible candidates at a given stage.
+
+4. **Search Space:**
+   - The entire space of all possible candidates and their combinations.
+
+## Backtracking Algorithm Steps
+
+1. **Choose:**
+   - Make a choice for the next candidate.
+
+2. **Explore:**
+   - Examine the chosen candidate.
+   - If it meets the constraints, proceed to the next stage.
+   - If it does not meet the constraints, backtrack.
+
+3. **Backtrack:**
+   - Undo the last choice and explore other possibilities.
+
+4. **Terminate:**
+   - Stop when a solution is found, or all possibilities have been explored.
+
+## Example: N-Queens Problem
+
+The N-Queens problem is a classic backtracking problem. The goal is to place N queens on an N×N chessboard in such a way that no two queens threaten each other.
+
+```typescript
+class NQueens {
+  private solutions: number[][] = [];
+
+  solveNQueens(n: number): number[][] {
+    this.solutions = [];
+    this.placeQueens(n, 0, []);
+    return this.solutions;
+  }
+
+  private placeQueens(n: number, row: number, currentPlacement: number[]): void {
+    if (row === n) {
+      // All queens are placed successfully
+      this.solutions.push([...currentPlacement]);
+      return;
+    }
+
+    for (let col = 0; col < n; col++) {
+      if (this.isSafe(row, col, currentPlacement)) {
+        currentPlacement.push(col);
+        this.placeQueens(n, row + 1, currentPlacement);
+        currentPlacement.pop();
+      }
+    }
+  }
+
+  private isSafe(row: number, col: number, placement: number[]): boolean {
+    for (let prevRow = 0; prevRow < row; prevRow++) {
+      const prevCol = placement[prevRow];
+
+      // Check if queens threaten each other
+      if (
+        prevCol === col ||                    // Same column
+        prevCol - prevRow === col - row ||    // Same diagonal (left to right)
+        prevCol + prevRow === col + row       // Same diagonal (right to left)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+}
+
+// Example usage
+const nQueens = new NQueens();
+const solutions = nQueens.solveNQueens(4);
+console.log("Solutions for 4-Queens Problem:", solutions);
+```
+
+In this example, the `NQueens` class solves the N-Queens problem using backtracking. The `solveNQueens` method initializes the process, and the `placeQueens` method recursively explores candidate placements. The `isSafe` method checks whether placing a queen in a particular position is safe.
+
+This example demonstrates how backtracking is used to systematically explore and find solutions to a constraint satisfaction problem. The N-Queens problem is just one illustration; the backtracking algorithm can be applied to a variety of problems with different constraints.
