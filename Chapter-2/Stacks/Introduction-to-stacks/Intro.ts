@@ -6,9 +6,10 @@
 
 class Stack {
   private data: any[] = [];
+  private top: number = -1;
 
-  public push(item: any): void {
-    this.data.push(item);
+  public push(item: any): number {
+   return  this.data.push(item);
   }
 
   public pop(): any {
@@ -31,10 +32,17 @@ class Stack {
     this.data = [];
   }
 
+  public isFULL(): boolean {
+    return this.data.length === 10;
+  }
   public print(): void {
     console.log(this.data.toString());
   }
 }
+
+const stack = new Stack();
+stack.push(1);
+console.log(stack.print); // 1
 
 // 2. Parsing an arithmetic expression:
 

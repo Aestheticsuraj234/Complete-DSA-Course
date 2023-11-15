@@ -26,17 +26,17 @@ There are two common ways to implement stacks in TypeScript: using arrays or lin
 
 **Implementing a Stack using an Array:**
 
-Here's an example of implementing a stack using an array:
+In array implementation, the stack is formed by using the array. All the operations regarding the stack are performed using arrays. Lets see how each operation can be implemented on the stack using array data structure.
 
 ```typescript
 class Stack<T> {
   private data: T[] = [];
 
-  public push(item: T): void {
+  public Spush(item: T): void {
     this.data.push(item);
   }
 
-  public pop(): T | null {
+  public Spop(): T | null {
     if (this.data.length === 0) {
       return null;
     }

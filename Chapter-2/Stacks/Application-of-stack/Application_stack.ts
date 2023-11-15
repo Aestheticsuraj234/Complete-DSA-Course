@@ -204,3 +204,14 @@ class NQueens {
   const solutions = nQueens.solveNQueens(10);
   console.log("Solutions for 4-Queens Problem:", solutions);
  
+
+//   Convert an infix arithmetic expression to postfix notation using a stack. For example, convert "3 + 4 * 2 / (1 - 5)^2" to "3 4 2 * 1 5 - 2 ^ / +".
+
+//   *Solution
+
+//   The infix expression is scanned from left to right. For each element in the expression:
+
+//   - If it is an operand, append it to the result.
+
+//   - If it is an operator:
+
