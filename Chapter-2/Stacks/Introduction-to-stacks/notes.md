@@ -12,7 +12,7 @@ There are many real-life examples of a stack. Consider an example of plates stac
 
 Stacks are implemented using arrays or linked lists. When an element is added to a stack, it is placed at the top of the stack. When an element is removed from a stack, the top element is removed.
 
-!("")[https://www.youtube.com/watch?v=-n2rVJE4vto&t=1069s]
+!["Image for How Stack Work="](https://www.youtube.com/watch?v=-n2rVJE4vto&t=1069s)
 
 ## Common Use Cases
 
@@ -141,7 +141,7 @@ Stack works on the LIFO pattern. As we can observe in the below figure there are
 
 Suppose we want to store the elements in a stack and let's assume that stack is empty. We have taken the stack of size 5 as shown below in which we are pushing the elements one by one until the stack becomes full.
 
-!(Image)[https://static.javatpoint.com/ds/images/ds-stack.png]
+![Image](https://static.javatpoint.com/ds/images/ds-stack.png)
 
 Since our stack is full as the size of the stack is 5. In the above cases, we can observe that it goes from the top to the bottom when we were entering the new element in the stack. The stack gets filled up from the bottom to the top.
 
@@ -171,11 +171,10 @@ The following are some common operations implemented on the stack:
 
 **The steps involved in the PUSH operation is given below:**
 
-* Before inserting an element in a stack, we check whether the stack is full.
-* If we try to insert the element in a stack, and the stack is full, then the overflow condition occurs.
-* When we initialize a stack, we set the value of top as -1 to check that the stack is empty.
-* When the new element is pushed in a stack, first, the value of the top gets incremented, i.e., top=top+1, and the element will be placed at the new position of the top.
-* The elements will be inserted until we reach the max size of the stack.
+- Before inserting an element in a stack, we check whether the stack is full.
+- If we try to insert the element in a stack, and the stack is full, then the overflow condition occurs.
+- When we initialize a stack, we set the value of top as -1 to check that the stack is empty.
+- When the new element is pushed in a stack, first, the value of the top gets incremented, i.e., top=top+1, and the element will be placed at the new position of the top.
+- The elements will be inserted until we reach the max size of the stack.
 
-!("Image")[https://static.javatpoint.com/ds/images/ds-stack2.png]
-
+!["Image"](https://static.javatpoint.com/ds/images/ds-stack2.png)
