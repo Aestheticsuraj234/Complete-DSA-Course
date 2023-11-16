@@ -29,11 +29,59 @@ Certainly! Here are 20 questions related to the Stack data structure along with 
 // *5. In a stack, the operations are O(1), whereas in an array, the operations are O(n).
 
 2. **Implementations:**
-   - Implement a stack using an array in TypeScript.
-   - Implement a stack using a linked list in TypeScript.
+   - Implement a stack using an array in TypeScript.✅
+   - Implement a stack using a linked list in TypeScript.🟨
 
 3. **Operations on Stacks:**
    - Explain the push and pop operations on a stack.
+
+   * 1. **Push Operation:** : `It is the Operation that is perform on a stack to Adding element in at the top pointer of the stack in LIFO Order.`
+
+🥇 coding example
+
+```typescript
+
+class Stack {
+    private data:any[] = [];
+
+     1. `Push`
+    public push(item:any):void{
+        this.data.push(item);
+    }
+
+}
+
+const newStack = new Stack()
+newStack.push("Hello world this is suraj!")
+newStack.push(19)
+
+
+```
+
+* 2. **Pop Operation:** : `It is the Operation that is perform on a stack to Removing element from the top of the stack.`
+
+🥇 coding example
+
+```typescript
+
+class Stack {
+    private data:any[] = [];
+
+   
+
+     2. `Pop`
+    public pop():any{
+        return this.data.pop();
+    }
+}
+
+const newStack = new Stack()
+newStack.pop
+
+
+
+```
+
    - Write a TypeScript function to check if parentheses in an expression are balanced using a stack.
 
 4. **Expression Evaluation:**
