@@ -41,10 +41,10 @@ class Stack<T> {
   isFull(): boolean {
     return this.stack.length === this.n;
   }
-// 7. print
-    printStack(stack:any): any {
-        console.log(stack);
-    }
+  // 7. print
+  printStack(stack: any): any {
+    console.log(stack);
+  }
 }
 
 const arrStack = new Stack<string>();
@@ -67,81 +67,111 @@ console.log(arrStack.size());
 class LinkedList<T> {
   data: T;
   next: LinkedList<T> | null;
-  constructor(data:T){
+  constructor(data: T) {
     this.data = data;
     this.next = null;
   }
 }
 
-class LinkedListStack<T>{
-    private head: LinkedList<T> | null = null;
-    private n: number = 10;
+class LinkedListStack<T> {
+  private head: LinkedList<T> | null = null;
+  private n: number = 10;
 
-    // 1. PUSH
+  // 1. PUSH
 
-    push(item: T): void {
-        if (this.head === null) {
-            this.head = new LinkedList(item);
-            return;
-        }
-        const newNode = new LinkedList(item);
-        newNode.next = this.head;
-        this.head = newNode;
+  push(item: T): void {
+    if (this.head === null) {
+      this.head = new LinkedList(item);
+      return;
     }
+    const newNode = new LinkedList(item);
+    newNode.next = this.head;
+    this.head = newNode;
+  }
 
+  // 2. POP
 
-
-    // 2. POP
-
-    pop(): T | null {
-        if (this.head === null) {
-            return null;
-        }
-        const item = this.head.data;
-        this.head = this.head.next;
-        return item;
+  pop(): T | null {
+    if (this.head === null) {
+      return null;
     }
+    const item = this.head.data;
+    this.head = this.head.next;
+    return item;
+  }
 
-    // 3. PEEK
+  // 3. PEEK
 
-    peek(): T | null {
-        if (this.head === null) {
-            return null;
-        }
-        return this.head.data;
+  peek(): T | null {
+    if (this.head === null) {
+      return null;
     }
+    return this.head.data;
+  }
 
-    // 4. isEmpty
+  // 4. isEmpty
 
-    isEmpty(): boolean {
-        return this.head === null;
+  isEmpty(): boolean {
+    return this.head === null;
+  }
+
+  // 5. size
+
+  size(): number {
+    let count = 0;
+    let current = this.head;
+    while (current !== null) {
+      count++;
+      current = current.next;
     }
+    return count;
+  }
 
-    // 5. size
+  // 6. isFull
 
-    size(): number {
-        let count = 0;
-        let current = this.head;
-        while (current !== null) {
-            count++;
-            current = current.next;
-        }
-        return count;
+  isFull(): boolean {
+    return this.size() === this.n;
+  }
+
+  // 7. print
+
+  printStack(): void {
+    let current = this.head;
+    while (current !== null) {
+      console.log(current.data);
+      current = current.next;
     }
-
-    // 6. isFull
-
-    isFull(): boolean {
-        return this.size() === this.n;
-    }
-
-    // 7. print
-
-    printStack(): void {
-        let current = this.head;
-        while (current !== null) {
-            console.log(current.data);
-            current = current.next;
-        }
-    }
+  }
 }
+
+// - Write a TypeScript function to check if parentheses in an expression are Balanced using a stack.
+
+const isParenthesesBalanced = (str: string): boolean => {
+  // Creating a stack
+  const stack: string[] = [];
+
+  // creating Open and closing brackets
+  const OpeningBrackets = ["[", "{", "("];
+  const closingBrackets = ["]", "}", ")"];
+
+  // Looping through each character in the string
+  for (let i = 0; i < str.length; i++) {
+    if (OpeningBrackets.includes(str[i])) {
+      stack.push(str[i]);
+    } else if (closingBrackets.includes(str[i])) {
+      const topElement = stack.pop();
+      // Return false if the element popped doesn’t match the corresponding closing bracket in the map
+      if (topElement !== OpeningBrackets[closingBrackets.indexOf(str[i])]) {
+        return false;
+      }
+    }
+  }
+  // Return true if stack is empty
+  if (stack.length === 0) {
+    return true;
+  }
+
+  return false;
+};
+
+console.log(isParenthesesBalanced("{[()]}")); // true
