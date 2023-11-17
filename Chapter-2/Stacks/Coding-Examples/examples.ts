@@ -175,3 +175,65 @@ const isParenthesesBalanced = (str: string): boolean => {
 };
 
 console.log(isParenthesesBalanced("{[()]}")); // true
+
+// Implement a browser history using a stack.
+
+class BrowserHistory {
+  private historyStack: string[] = [];
+  private currentIndex: number = -1;
+
+  // navigate to a new url
+  navigateTo(url: string): void {
+    // CLEAR THE  FORWARD HISTORY
+    this.historyStack = this.historyStack.slice(0, this.currentIndex + 1);
+
+    // add the new url to the stack
+    this.historyStack.push(url);
+    this.currentIndex = this.historyStack.length - 1;
+  }
+
+  // Navigate back
+  navigteBack(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      console.log(`Navigated to ${this.historyStack[this.currentIndex]}`);
+    } else {
+      console.log(`Can't go back further`);
+    }
+  }
+
+  // Navigate forward
+  navigteForward(): void {
+    if(this.currentIndex <this.historyStack.length -1){
+      this.currentIndex++;
+      console.log(`Navigated to ${this.historyStack[this.currentIndex]}`);
+    }
+    else {
+      console.log(`Can't go forward further`);
+    }
+  }
+
+  // Display the current page
+  getCurrentPage(): string {
+    return this.historyStack[this.currentIndex];
+  }
+
+  // Display the full history stack
+  getFullHistory(): string[] {
+    return this.historyStack;
+  }
+
+    
+}
+
+const browserHistory = new BrowserHistory();
+
+
+browserHistory.navigateTo("https://example.com/page1");
+browserHistory.navigateTo("https://example.com/page2");
+browserHistory.navigteBack();
+browserHistory.navigateTo("https://example.com/page3");
+browserHistory.navigteForward();
+
+console.log("Current Page:", browserHistory.getCurrentPage());
+console.log("Full History:", browserHistory.getFullHistory());

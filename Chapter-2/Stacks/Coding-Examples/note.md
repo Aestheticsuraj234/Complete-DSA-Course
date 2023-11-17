@@ -201,7 +201,7 @@ main();
 
 ```
 
-   - Demonstrate the concept of recursion using the function call stack.
+   - Demonstrate the concept of recursion using the function call stack.✅
 
 Certainly! Recursion is a programming concept where a function calls itself in its definition. This often leads to a natural demonstration of the function call stack. Let's consider the classic example of calculating the factorial of a number using recursion:
 
@@ -296,8 +296,98 @@ The final result is calculated as each function returns, and the call stack even
 
 6. **Applications:**
 
-   - Describe a real-world scenario where a stack can be used effectively.
-   - Implement a browser history using a stack.
+   - ### Describe a real-world scenario where a stack can be used effectively.
+
+   A real-world scenario where a stack can be used effectively is in the management of a web browser's back button history. The back button allows users to navigate to the previously visited web pages in reverse chronological order. A stack data structure is well-suited for implementing this functionality.
+
+Here's how it works:
+
+1. **Initial Page Load:**
+   - When a user opens a web browser and navigates to a webpage, the initial page is pushed onto the stack.
+
+2. **Navigation:**
+   - As the user clicks links or visits new pages, the current page is pushed onto the stack.
+   - The stack now represents the navigation history, with the most recently visited page at the top.
+
+3. **Back Button Click:**
+   - When the user clicks the back button, the browser pops the top page from the stack and loads the previous page.
+   - The stack effectively maintains the order of pages visited, allowing for easy navigation in reverse order.
+
+4. **Forward Button Click:**
+   - If the user clicks the forward button, the browser can push the current page back onto the stack (if it was popped during a back button click) and load the next page.
+
+Using a stack for the back button history ensures a straightforward and efficient way to manage page navigation. It aligns with the Last-In-First-Out (LIFO) nature of the stack, where the most recently visited page is the first to be retrieved when the user goes back. This implementation is both intuitive for users and efficient for developers to manage navigation history in web browsers.
+
+   - Implement a browser history using a stack.✅
+   
+   Certainly! Below is a simple TypeScript implementation of a browser history using a stack. In this example, I'll create a `BrowserHistory` class with methods to navigate forward, backward, and add new pages to the history stack.
+
+```typescript
+class BrowserHistory {
+  private historyStack: string[] = [];
+  private currentIndex: number = -1;
+
+  // Navigate to a new page
+  navigateTo(url: string): void {
+    // Clear the forward history when navigating to a new page
+    this.historyStack = this.historyStack.slice(0, this.currentIndex + 1);
+
+    // Add the new page to the history stack
+    this.historyStack.push(url);
+    this.currentIndex = this.historyStack.length - 1;
+  }
+
+  // Navigate back
+  navigateBack(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      console.log(`Navigated back to: ${this.historyStack[this.currentIndex]}`);
+    } else {
+      console.log("Cannot go back further.");
+    }
+  }
+
+  // Navigate forward
+  navigateForward(): void {
+    if (this.currentIndex < this.historyStack.length - 1) {
+      this.currentIndex++;
+      console.log(`Navigated forward to: ${this.historyStack[this.currentIndex]}`);
+    } else {
+      console.log("Cannot go forward further.");
+    }
+  }
+
+  // Display the current page
+  getCurrentPage(): string {
+    return this.historyStack[this.currentIndex];
+  }
+
+  // Display the full history stack
+  getFullHistory(): string[] {
+    return this.historyStack;
+  }
+}
+
+// Example usage:
+const browserHistory = new BrowserHistory();
+
+browserHistory.navigateTo("https://example.com/page1");
+browserHistory.navigateTo("https://example.com/page2");
+browserHistory.navigateBack();
+browserHistory.navigateTo("https://example.com/page3");
+browserHistory.navigateForward();
+
+console.log("Current Page:", browserHistory.getCurrentPage());
+console.log("Full History:", browserHistory.getFullHistory());
+```
+
+In this example:
+
+- The `navigateTo` method adds a new page to the history stack.
+- The `navigateBack` and `navigateForward` methods allow the user to move backward and forward in the history.
+- The `getCurrentPage` method returns the current page, and `getFullHistory` returns the entire history stack.
+
+Please note that this is a simplified example, and in a real-world scenario, you might want to handle more complex scenarios, such as handling user input, managing session history, or handling browser tab behaviors.
 
 7. **Next Greater Element:**
 
