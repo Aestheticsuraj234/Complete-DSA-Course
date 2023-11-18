@@ -204,11 +204,10 @@ class BrowserHistory {
 
   // Navigate forward
   navigteForward(): void {
-    if(this.currentIndex <this.historyStack.length -1){
+    if (this.currentIndex < this.historyStack.length - 1) {
       this.currentIndex++;
       console.log(`Navigated to ${this.historyStack[this.currentIndex]}`);
-    }
-    else {
+    } else {
       console.log(`Can't go forward further`);
     }
   }
@@ -222,12 +221,9 @@ class BrowserHistory {
   getFullHistory(): string[] {
     return this.historyStack;
   }
-
-    
 }
 
 const browserHistory = new BrowserHistory();
-
 
 browserHistory.navigateTo("https://example.com/page1");
 browserHistory.navigateTo("https://example.com/page2");
@@ -237,3 +233,116 @@ browserHistory.navigteForward();
 
 console.log("Current Page:", browserHistory.getCurrentPage());
 console.log("Full History:", browserHistory.getFullHistory());
+
+// Next greater element using a stack
+
+// ? Given an array, implement a TypeScript function to find the next greater element for each element in the array using a stack.
+
+function findNextGreaterElements(arr: number[]): number[] {
+  const result: number[] = [];
+  const stack: number[] = [];
+
+  // Iterate through the array
+  for (let i = 0; i < arr.length; i++) {
+    // Pop elements from the stack while they are smaller than the current element
+    while (stack.length > 0 && arr[i] > arr[stack[stack.length - 1]]) {
+      const smallerElementIndex = stack.pop()!;
+      console.log(smallerElementIndex);
+      result[smallerElementIndex] = arr[i];
+    }
+
+    // Push the current element onto the stack
+    stack.push(i);
+  }
+
+  // For elements without a next greater element, mark as -1
+  while (stack.length > 0) {
+    const remainingElementIndex = stack.pop()!;
+    result[remainingElementIndex] = -1;
+  }
+
+  return result;
+}
+
+// Example usage:
+const inputArray = [1, 2, 4, 3, 5, 6, 7, 8, 9, 10];
+const nextGreaterElements = findNextGreaterElements(inputArray);
+
+console.log("Input Array:", inputArray);
+console.log("Next Greater Elements:", nextGreaterElements);
+
+// - Implement a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+class MinStack {
+  // Define two private arrays to store elements
+  private stack: number[] = []; // to store the main elements
+  private minStack: number[] = []; // to store the minimum elements
+
+  // ?Step 2: Implement the `push` method
+  public push(element: number): void {
+    // !Add the new element to the main stack
+    this.stack.push(element);
+
+    // !Check if the minStack is empty or the new value is smaller than or equal to the current minimum
+    if (
+      this.minStack.length === 0 ||
+      element <= this.minStack[this.minStack.length - 1]
+    ) {
+      // !Add the new element to the minStack
+      this.minStack.push(element);
+    }
+  }
+
+  // ?Step 3: Implement the pop method
+
+  public pop() {
+    // Check if the main stack is empty
+    if (this.stack.length === 0) {
+      console.log("Stack is empty. Cannot pop.");
+      return null;
+    }
+
+    // Pop the top element from the main stack
+    const popedElement = this.stack.pop();
+
+    // Check if the popped element is the current minimum
+    if (popedElement === this.minStack[this.minStack.length - 1]) {
+      // Pop the top element from the minStack
+      this.minStack.pop();
+    }
+  }
+
+  // ?Step 4: Implement the top and getMin methods
+  public top(): number | undefined {
+    return this.stack[this.stack.length - 1];
+  }
+
+  // !Get the minimum element from the stack
+  getMin(): number | undefined {
+    // Return the current minimum element from the minStack
+    return this.minStack[this.minStack.length - 1];
+  }
+
+}
+
+
+const  minStack = new MinStack();
+
+minStack.push(5);
+minStack.push(2);
+minStack.push(4);
+minStack.push(1);
+minStack.push(3);
+
+minStack.push(3);
+minStack.push(5);
+console.log("Top:", minStack.top()); // Output: 5
+console.log("Min:", minStack.getMin()); // Output: 3
+
+minStack.push(2);
+console.log("Top:", minStack.top()); // Output: 2
+console.log("Min:", minStack.getMin()); // Output: 2
+
+minStack.pop();
+console.log("Top:", minStack.top()); // Output: 5
+console.log("Min:", minStack.getMin()); // Output: 3
