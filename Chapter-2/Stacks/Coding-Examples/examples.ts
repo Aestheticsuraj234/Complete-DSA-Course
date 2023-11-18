@@ -149,24 +149,22 @@ class LinkedListStack<T> {
 const isParenthesesBalanced = (str: string): boolean => {
   // Creating a stack
   const stack: string[] = [];
+  const OpeningParentheses = ["(", "{", "["];
+  const ClosingParentheses = [")", "}", "]"];
 
-  // creating Open and closing brackets
-  const OpeningBrackets = ["[", "{", "("];
-  const closingBrackets = ["]", "}", ")"];
-
-  // Looping through each character in the string
+  // Iterating through each character of the string
   for (let i = 0; i < str.length; i++) {
-    if (OpeningBrackets.includes(str[i])) {
+    if (OpeningParentheses.includes(str[i])) {
       stack.push(str[i]);
-    } else if (closingBrackets.includes(str[i])) {
+    } else if (ClosingParentheses.includes(str[i])) {
       const topElement = stack.pop();
-      // Return false if the element popped doesn’t match the corresponding closing bracket in the map
-      if (topElement !== OpeningBrackets[closingBrackets.indexOf(str[i])]) {
+      if (
+        topElement !== OpeningParentheses[ClosingParentheses.indexOf(str[i])]
+      ) {
         return false;
       }
     }
   }
-  // Return true if stack is empty
   if (stack.length === 0) {
     return true;
   }
@@ -379,14 +377,13 @@ function sortStack(inputStack: SampleStack): SampleStack {
   const tempStack = new SampleStack();
 
   // loop through the input stack until it is empty
-  while(!inputStack.isEmpty()){
+  while (!inputStack.isEmpty()) {
     const topElement = inputStack.pop()!;
-    while(!tempStack.isEmpty() && tempStack.peek()! > topElement){
-      inputStack.push(tempStack.pop()!)
+    while (!tempStack.isEmpty() && tempStack.peek()! > topElement) {
+      inputStack.push(tempStack.pop()!);
     }
     tempStack.push(topElement!);
   }
-  
-  return tempStack;
 
+  return tempStack;
 }
