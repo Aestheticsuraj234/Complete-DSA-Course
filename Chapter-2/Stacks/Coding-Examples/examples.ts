@@ -322,11 +322,9 @@ class MinStack {
     // Return the current minimum element from the minStack
     return this.minStack[this.minStack.length - 1];
   }
-
 }
 
-
-const  minStack = new MinStack();
+const minStack = new MinStack();
 
 minStack.push(5);
 minStack.push(2);
@@ -346,3 +344,50 @@ console.log("Min:", minStack.getMin()); // Output: 2
 minStack.pop();
 console.log("Top:", minStack.top()); // Output: 5
 console.log("Min:", minStack.getMin()); // Output: 3
+
+// - Implement a TypeScript function to sort a stack.
+
+class SampleStack {
+  private items: number[] = [];
+
+  // Push operation
+  push(item: number): void {
+    this.items.push(item);
+  }
+
+  // Pop operation
+  pop(): number | undefined {
+    return this.items.pop();
+  }
+
+  // Peek operation
+  peek(): number | undefined {
+    return this.items.length === 0
+      ? undefined
+      : this.items[this.items.length - 1];
+  }
+
+  // Check if the stack is empty
+  isEmpty(): boolean {
+    return this.items.length === 0;
+  }
+}
+
+// Function to sort a stack in ascending order
+function sortStack(inputStack: SampleStack): SampleStack {
+  // Create a new stack to store the sorted elements
+  const sortedStack = new SampleStack();
+
+  // Iterate through the input stack until it becomes empty
+  while(!inputStack.isEmpty()){
+    const topElement = inputStack.pop()!;
+    if(!sortedStack.isEmpty() && sortedStack.peek()! > topElement){
+      
+    }
+
+    sortedStack.push(topElement)!;
+  }
+  
+  return sortedStack;
+
+}
