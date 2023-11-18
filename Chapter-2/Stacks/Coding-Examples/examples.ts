@@ -375,19 +375,18 @@ class SampleStack {
 
 // Function to sort a stack in ascending order
 function sortStack(inputStack: SampleStack): SampleStack {
-  // Create a new stack to store the sorted elements
-  const sortedStack = new SampleStack();
+  // create a new stack
+  const tempStack = new SampleStack();
 
-  // Iterate through the input stack until it becomes empty
+  // loop through the input stack until it is empty
   while(!inputStack.isEmpty()){
     const topElement = inputStack.pop()!;
-    if(!sortedStack.isEmpty() && sortedStack.peek()! > topElement){
-      
+    while(!tempStack.isEmpty() && tempStack.peek()! > topElement){
+      inputStack.push(tempStack.pop()!)
     }
-
-    sortedStack.push(topElement)!;
+    tempStack.push(topElement!);
   }
   
-  return sortedStack;
+  return tempStack;
 
 }
