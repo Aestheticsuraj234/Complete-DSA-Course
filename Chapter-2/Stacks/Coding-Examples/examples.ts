@@ -387,3 +387,60 @@ function sortStack(inputStack: SampleStack): SampleStack {
 
   return tempStack;
 }
+
+
+
+// Stock Span Problem:
+
+// !Given an array representing stock prices on different days, implement a TypeScript function to calculate the span of stock's price for all days
+
+class StockSpanner {
+  private prices: number[];
+  private spans: number[];
+
+  constructor() {
+    this.prices = [];
+    this.spans = [];
+  }
+
+  next(price: number): number {
+    let span = 1;
+
+    // Check the previous days and update the span
+    while (
+      this.prices.length > 0 &&
+      price >= this.prices[this.prices.length - 1]
+    ) {
+      this.prices.pop();
+      span += this.spans.pop()!;
+    }
+
+    // Update the current day's price and span
+    this.prices.push(price);
+    this.spans.push(span);
+
+    return span;
+  }
+}
+
+
+const stockSpanner = new StockSpanner();
+
+console.log(stockSpanner.next(90));
+console.log(stockSpanner.next(75));
+console.log(stockSpanner.next(100));
+console.log(stockSpanner.next(60));
+console.log(stockSpanner.next(30));
+console.log(stockSpanner.next(20));
+
+
+// **Tower of Hanoi:**
+
+// - Explain the Tower of Hanoi problem and how it can be solved using recursion and a stack.
+
+
+ 
+   
+
+   
+

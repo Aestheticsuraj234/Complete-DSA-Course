@@ -129,11 +129,11 @@ Certainly! Let me format the information in a more organized and readable way:
 
 Feel free to ask if you have specific questions or need further explanations on any topic!
 
-10. **Balanced Parentheses:**
+10. **Balanced Parentheses:**✅
 
     - Write a TypeScript function to check if a given string of parentheses is balanced using a stack.
 
-11. **Stock Span Problem:**
+11. **Stock Span Problem:**✅
 
     - Given an array representing stock prices on different days, implement a TypeScript function to calculate the span of stock's price for all days.
 
