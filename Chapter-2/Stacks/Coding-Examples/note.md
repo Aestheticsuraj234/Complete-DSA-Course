@@ -137,7 +137,7 @@ Feel free to ask if you have specific questions or need further explanations on 
 
     - Given an array representing stock prices on different days, implement a TypeScript function to calculate the span of stock's price for all days.
 
-12. **Tower of Hanoi:**
+12. **Tower of Hanoi:**✅
 
     - Explain the Tower of Hanoi problem and how it can be solved using recursion and a stack.
 
@@ -153,7 +153,7 @@ Feel free to ask if you have specific questions or need further explanations on 
 
     - Explain how an expression tree can be constructed from a postfix expression.
 
-16. **Special Stack:**
+16. **Special Stack:**✅
 
     - Implement a stack that supports push, pop, getMinimum (retrieving the minimum element), and getAverage (retrieving the average element) in constant time.
 
@@ -164,6 +164,97 @@ Feel free to ask if you have specific questions or need further explanations on 
 18. **Queue Using Stacks:**
 
     - Implement a queue using two stacks.
+    
+    Certainly! Implementing a queue using two stacks involves using one stack for the enqueue operation and the other stack for the dequeue operation. Here's a TypeScript implementation:
+
+```typescript
+class QueueUsingStacks<T> {
+  private stack1: T[] = []; // For enqueue operation
+  private stack2: T[] = []; // For dequeue operation
+
+  // Enqueue operation
+  enqueue(item: T): void {
+    this.stack1.push(item);
+  }
+
+  // Dequeue operation
+  dequeue(): T | undefined {
+    // If stack2 is empty, transfer elements from stack1
+    if (this.stack2.length === 0) {
+      // If stack1 is also empty, the queue is empty
+      if (this.stack1.length === 0) {
+        return undefined;
+      }
+
+      // Transfer elements from stack1 to stack2
+      while (this.stack1.length > 0) {
+        this.stack2.push(this.stack1.pop()!);
+      }
+    }
+
+    // Pop from stack2 for dequeue operation
+    return this.stack2.pop();
+  }
+
+  // Peek at the front element without dequeuing
+  peek(): T | undefined {
+    // If stack2 is empty, transfer elements from stack1
+    if (this.stack2.length === 0) {
+      // If stack1 is also empty, the queue is empty
+      if (this.stack1.length === 0) {
+        return undefined;
+      }
+
+      // Transfer elements from stack1 to stack2
+      while (this.stack1.length > 0) {
+        this.stack2.push(this.stack1.pop()!);
+      }
+    }
+
+    // Peek at the front element in stack2
+    return this.stack2[this.stack2.length - 1];
+  }
+
+  // Check if the queue is empty
+  isEmpty(): boolean {
+    return this.stack1.length === 0 && this.stack2.length === 0;
+  }
+
+  // Get the size of the queue
+  size(): number {
+    return this.stack1.length + this.stack2.length;
+  }
+}
+
+// Example usage:
+const queue = new QueueUsingStacks<number>();
+
+console.log("Is the queue empty?", queue.isEmpty()); // true
+
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+
+console.log("Front element:", queue.peek()); // 1
+
+console.log("Dequeue:", queue.dequeue()); // 1
+console.log("Dequeue:", queue.dequeue()); // 2
+
+console.log("Is the queue empty?", queue.isEmpty()); // false
+console.log("Queue size:", queue.size()); // 1
+```
+
+Explanation:
+
+- `stack1`: Used for the enqueue operation.
+- `stack2`: Used for the dequeue operation.
+- `enqueue(item)`: Pushes the item onto `stack1`.
+- `dequeue()`: If `stack2` is empty, transfers elements from `stack1` to `stack2` to reverse the order. Then, pops from `stack2`.
+- `peek()`: Similar to `dequeue`, but only peeks at the front element without dequeuing.
+- `isEmpty()`: Returns `true` if both stacks are empty.
+- `size()`: Returns the total size of the queue.
+
+This implementation ensures that enqueue and dequeue operations have an amortized time complexity of O(1).
 
 19. **Decode String:**
 

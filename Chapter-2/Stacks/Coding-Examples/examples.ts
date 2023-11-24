@@ -439,8 +439,182 @@ console.log(stockSpanner.next(20));
 // - Explain the Tower of Hanoi problem and how it can be solved using recursion and a stack.
 
 
- 
+//  class TowerOfHano{
+//      solveIteratively(numberOfDisks:number , Source:string , Helper:string , Destination:string){
+
+//          if(numberOfDisks === 1){
+//              console.log(`Move disk ${numberOfDisks} from ${Source} to ${Destination}`);
+//              return;
+//          }
+
+//          this.solveIteratively(numberOfDisks-1 , Source , Destination , Helper);
+//          console.log(`Move disk ${numberOfDisks} from ${Source} to ${Destination}`);
+
+//          this.solveIteratively(numberOfDisks-1 , Helper , Source , Destination);
+
+//      }
+
+//  }
+
+// **Special Stack:**
+
+// - Implement a stack that supports push, pop, getMinimum (retrieving the minimum element), and getAverage (retrieving the average element) in constant time.
    
 
    
+class SpecialStack<T>{
+  private stack: T[] = [];
+  private minStack: T[] = [];
+  private avgStack: T[] = [];
 
+  push(item: T): void {
+    this.stack.push(item);
+    if(this.minStack.length===0 || item<=this.minStack[this.minStack.length-1]){
+      this.minStack.push(item);
+    }
+
+    if(this.avgStack.length===0){
+      this.avgStack.push(item);
+    }
+    else{
+      const avg = this.avgStack[this.avgStack.length-1];
+      // @ts-ignore
+      this.avgStack.push((avg+item)/2);
+    }
+
+  }
+
+  pop(): T | undefined {
+    const item = this.stack.pop();
+    if(item===this.minStack[this.minStack.length-1]){
+      this.minStack.pop();
+    }
+    this.avgStack.pop();
+    return item;
+  }
+
+  getMinimum(): T | undefined {
+    return this.minStack[this.minStack.length-1];
+  }
+
+  getAverage(): T | undefined {
+    return this.avgStack[this.avgStack.length-1];
+  }
+
+  printStack(stack: any): any {
+    console.log(stack);
+  }
+}
+
+const specialStack = new SpecialStack<number>();
+
+specialStack.push(5);
+specialStack.push(2);
+specialStack.push(4);
+specialStack.push(0);
+specialStack.push(3);
+
+specialStack.push(3);
+
+console.log("Minimum:", specialStack.getMinimum()); // Output: 1
+console.log("Average:", specialStack.getAverage()); // Output: 2.6
+
+
+
+// **Celebrity Problem:**
+
+// - Given a matrix representing people and their known relationships, implement a TypeScript function to find a celebrity if one exists.
+
+function findCelebrity(matrix: boolean[][]): number {
+  const n = matrix.length;
+  let left = 0;
+  let right = n - 1;
+
+  // Step 1: Elimination
+  while (left < right) {
+    if (matrix[left][right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  // Step 2: Identification
+  const potentialCelebrity = left;
+
+  // Step 3: Verification
+  for (let i = 0; i < n; i++) {
+    if (i !== potentialCelebrity && (matrix[potentialCelebrity][i] || !matrix[i][potentialCelebrity])) {
+      // If the potential celebrity knows someone or is not known by someone, they are not a celebrity.
+      return -1;
+    }
+  }
+
+  // Check if the potential celebrity is known by everyone and doesn't know anyone
+  for (let i = 0; i < n; i++) {
+    if (i !== potentialCelebrity && !matrix[i][potentialCelebrity]) {
+      return -1;
+    }
+  }
+
+  // The person at index 'potentialCelebrity' is our potential celebrity!
+  return potentialCelebrity;
+}
+
+// Example matrix where a celebrity is person 2
+const celebrityMatrix: boolean[][] = [
+  [false, true, false, true],
+  [false, false, false, true],
+  [false, false, false, true],
+  [false, false, false, false],
+];
+
+const celebrity = findCelebrity(celebrityMatrix);
+
+if (celebrity === -1) {
+  console.log("No celebrity found");
+} else {
+  console.log(`Celebrity found at index ${celebrity}`);
+}
+
+
+
+// **Decode String:**
+
+//     - Given an encoded string, implement a TypeScript function to decode it using a stack.
+
+function decodeString(s: string): string {
+  const stack: string[] = [];
+  let currentNum = 0;
+  let currentStr = '';
+
+  for (const char of s) {
+    if (char >= '0' && char <= '9') {
+      // Accumulate the number
+      currentNum = currentNum * 10 + parseInt(char, 10);
+    } else if (char === '[') {
+      // Push the currentNum and currentStr onto the stack, then reset
+      stack.push(currentStr);
+      stack.push(currentNum.toString());
+      currentNum = 0;
+      currentStr = '';
+    } else if (char === ']') {
+      // Pop the number and the previous string from the stack
+      const num = parseInt(stack.pop()!, 10);
+      const prevStr = stack.pop()!;
+      
+      // Repeat the current string 'num' times and append it to the previous string
+      currentStr = prevStr + currentStr.repeat(num);
+    } else {
+      // Accumulate characters for the current string
+      currentStr += char;
+    }
+  }
+
+  return currentStr;
+}
+
+// Example usage:
+const encodedString = "3[a2[bc]]";
+const decodedString = decodeString(encodedString);
+console.log(decodedString); // Output: "abcbcabcbcabcbc"
