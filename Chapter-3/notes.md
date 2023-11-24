@@ -1,6 +1,3 @@
-Certainly! Below is a set of comprehensive notes on Linked Lists, covering the basics, types, advantages, and implementation details. Each section is followed by example questions to reinforce the concepts.
-
----
 
 ## Linked Lists
 
