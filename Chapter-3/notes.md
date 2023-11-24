@@ -4,6 +4,7 @@ Certainly! Below is a set of comprehensive notes on Linked Lists, covering the b
 
 ## Linked Lists
 
+
 ### Basics of Linked Lists
 
 #### What is a Linked List?
@@ -168,4 +169,4 @@ Output:
    - Why are linked lists considered memory-efficient compared to arrays?
 
 10. **Dynamic Size:**
-    - How does a linked
+    - How does a linked list accommodate scenarios with an unknown number of
