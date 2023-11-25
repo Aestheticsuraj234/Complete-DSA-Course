@@ -110,6 +110,43 @@ class SinglyLinkedList<T> {
     }
     return count;
   }
+
+
+  public reverseIteratively() {
+    let prev = null;
+    let current = this.head;
+    let next = null;
+
+    while (current !== null) {
+    // @ts-ignore
+      next = current.next;
+      current.next = prev;
+    // @ts-ignore
+      prev = current;
+      current = next;
+    }
+
+    this.head = prev;
+
+  }
+
+
+  public reverseRecursively(node: Nodes<T> | null = this.head): Nodes<T> | null {
+    if (node === null || node.next === null) {
+      this.head = node;
+      return node;
+    }
+
+    const rest = this.reverseRecursively(node.next);
+    node.next.next = node;
+    node.next = null;
+
+    return rest;
+  }
+
+
+
+
 }
 
 // Implementation of the LinkedList
