@@ -75,26 +75,54 @@ class SinglyLinkedList<T> {
     return false;
   }
 
-
   // *Recursive searching in a Linked List.
 
-    searchRecursive(temp: Nodes<T> | null, target: T): boolean {
-        if (temp === null) {
-        return false;
-        }
-    
-        if (temp.data === target) {
-        return true;
-        }
-    
-        return this.searchRecursive(temp.next, target);
+  searchRecursive(temp: Nodes<T> | null, target: T): boolean {
+    if (temp === null) {
+      return false;
     }
 
+    if (temp.data === target) {
+      return true;
+    }
 
+    return this.searchRecursive(temp.next, target);
+  }
+
+  // *Find the length of the linked list (Recursive);
+  public findLengthRecursively(temp: Nodes<T> | null): number {
+    if (temp === null) {
+      return 0;
+    }
+
+    return 1 + this.findLengthRecursively(temp.next);
+  }
+
+  // *Find the length of the linked list (Iterative);
+
+  public findLengthIterative(): number {
+    let temp = this.head;
+    let count = 0;
+
+    while (temp !== null) {
+      count++;
+      temp = temp.next;
+    }
+    return count;
+  }
 }
 
 // Implementation of the LinkedList
 
 let linkedList = new SinglyLinkedList<number>();
 
-console.log(linkedList);
+linkedList.insertAtBeginning(1);
+linkedList.insertAtBeginning(2);
+linkedList.insertAtBeginning(3);
+
+
+const lengths = linkedList.findLengthRecursively(linkedList.head);
+console.log(lengths);
+
+const length2 = linkedList.findLengthIterative();
+console.log(length2);
