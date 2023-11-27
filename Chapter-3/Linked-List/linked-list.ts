@@ -202,3 +202,42 @@ const deleteFromEnd = (head: Nodes<number> | null): Nodes<number> | null => {
   // Return the head of the modified linked list
   return head;
 };
+
+
+// *Deleting a node from the middle of the linked list.
+
+const deleteFromMiddle = (head: Nodes<number>, targetValue: number): Nodes<number> | null => {
+  if (head === null) {
+    return null;
+  }
+
+  // Initialize two pointers: slow and fast
+  let slow = head;
+  let fast = head;
+  let previous = null;
+
+  // Move fast pointer twice as fast as slow pointer
+  while (fast !== null && fast.next !== null) {
+    
+    previous = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  // Check if the target value is found in the middle
+  if (slow && slow.value === targetValue) {
+    // If the node to be deleted is the head
+    if (previous === null) {
+      return head.next;
+    }
+
+    // Bypass the node to be deleted
+    previous.next = slow.next;
+
+    // Return the head of the modified linked list
+    return head;
+  }
+
+  // Return the original linked list if the target value is not found
+  return head;
+};
