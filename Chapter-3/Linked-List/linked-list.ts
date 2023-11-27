@@ -241,3 +241,46 @@ const deleteFromMiddle = (head: Nodes<number>, targetValue: number): Nodes<numbe
   // Return the original linked list if the target value is not found
   return head;
 };
+
+
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
+ */
+function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+  // Create a dummy head node to represent the head of the result linked list.
+  let dummyHead = new ListNode();
+  let resultCurrent = dummyHead;
+  let carry = 0;
+
+  while (l1 !== null || l2 !== null || carry !== 0) {
+      const digitl1 = l1 ? l1.val : 0;
+      const digitl2 = l2 ? l2.val : 0;
+
+      // Calculate the sum and carry
+      const sum = digitl1 + digitl2 + carry;
+      carry = Math.floor(sum / 10);
+
+      // Create a new node with the current digit and append it to the result linked list
+      resultCurrent.next = new ListNode(sum % 10);
+      resultCurrent = resultCurrent.next;
+
+      // Move to the next nodes in l1 and l2 if they exist
+      if (l1 !== null) l1 = l1.next;
+      if (l2 !== null) l2 = l2.next;
+  }
+
+  // The dummyHead.next represents the actual head of the result linked list
+  return dummyHead.next;
+}
+
+
