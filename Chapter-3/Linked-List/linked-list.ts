@@ -111,27 +111,26 @@ class SinglyLinkedList<T> {
     return count;
   }
 
-
   public reverseIteratively() {
     let prev = null;
     let current = this.head;
     let next = null;
 
     while (current !== null) {
-    // @ts-ignore
+      // @ts-ignore
       next = current.next;
       current.next = prev;
-    // @ts-ignore
+      // @ts-ignore
       prev = current;
       current = next;
     }
 
     this.head = prev;
-
   }
 
-
-  public reverseRecursively(node: Nodes<T> | null = this.head): Nodes<T> | null {
+  public reverseRecursively(
+    node: Nodes<T> | null = this.head
+  ): Nodes<T> | null {
     if (node === null || node.next === null) {
       this.head = node;
       return node;
@@ -143,10 +142,6 @@ class SinglyLinkedList<T> {
 
     return rest;
   }
-
-
-
-
 }
 
 // Implementation of the LinkedList
@@ -157,9 +152,53 @@ linkedList.insertAtBeginning(1);
 linkedList.insertAtBeginning(2);
 linkedList.insertAtBeginning(3);
 
-
 const lengths = linkedList.findLengthRecursively(linkedList.head);
 console.log(lengths);
 
 const length2 = linkedList.findLengthIterative();
 console.log(length2);
+
+// Deleting a linked list from a given position;
+
+// *Deleting a node from the beginning of the linked list.
+
+const deleteFromBeginning = (
+  head: Nodes<number> | null
+): Nodes<number> | null => {
+  if (head === null) {
+    return null;
+  }
+  const current = head;
+  head = head.next;
+  current.next = null;
+  return head;
+};
+
+const deletedNode = deleteFromBeginning(linkedList.head);
+console.log(deletedNode);
+
+// *Deleting a node from the end of the linked list.
+
+const deleteFromEnd = (head: Nodes<number> | null): Nodes<number> | null => {
+  // Check if the linked list is empty
+  if (head === null) {
+    return null;
+  }
+  // Initialize two pointers: current and previous
+  let current = head;
+  let previous = null;
+  // Traverse to the last node of the linked list
+  while (current.next !== null) {
+    //  @ts-ignore
+    // Move the previous pointer to the current node
+    previous = current;
+    //  Move the current pointer to the next node
+    current = current.next;
+  }
+  // Break the link from the previous node to the last node (current)
+  // @ts-ignore
+  previous.next = null;
+
+  // Return the head of the modified linked list
+  return head;
+};
