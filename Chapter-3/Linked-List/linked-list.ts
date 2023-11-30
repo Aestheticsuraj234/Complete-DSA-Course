@@ -284,3 +284,42 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 }
 
 
+
+// Remove the nth node from the end of the linked list
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
+ */
+
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+    const dummy = new ListNode();
+    dummy.next = head;
+
+    let fast = dummy;
+    let slow = dummy;
+
+    // Move the fast pointer n+1 steps ahead
+    for (let i = 0; i <= n; i++) {
+        fast = fast.next!;
+    }
+
+    // Move both pointers until the fast pointer reaches the end
+    while (fast !== null) {
+        fast = fast.next!;
+        slow = slow.next!;
+    }
+
+    // Remove the n-th node from the end
+    slow.next = slow.next!.next;
+
+    // Return the modified linked list
+    return dummy.next;
+}
