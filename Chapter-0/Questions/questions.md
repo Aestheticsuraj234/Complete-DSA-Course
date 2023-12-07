@@ -44,4 +44,6 @@
 
 ## 23. find maximum product subarray ✅
 
-## 24. Find longest coinsecutive subsequence;
+## 24. Find longest coinsecutive subsequence;✅
+
+## 25. Given Array of size n and a number k, find all elements that appear more than n/k times.🍒 ✅ ( revise)
