@@ -47,3 +47,15 @@
 ## 24. Find longest coinsecutive subsequence;✅
 
 ## 25. Given Array of size n and a number k, find all elements that appear more than n/k times.🍒 ✅ ( revise)
+
+## 26. Maximum profit by buying and selling a share atmost twice 😭 ( dropped)
+
+## 27. Find whether an array is a subset of another array ✅
+
+## 28. Triplet Sum in Array;✅
+
+## 29. traprainwater ✅ (🍒 revise)
+
+## 30 . Choclate distribution Problem! 😭 ( dropped)
+
+## 31. Minimum swaps and k together!
