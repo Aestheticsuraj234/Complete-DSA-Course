@@ -59,3 +59,5 @@
 ## 30 . Choclate distribution Problem! 😭 ( dropped)
 
 ## 31. Minimum swaps and k together!
+
+## 32. Palindromic Array
