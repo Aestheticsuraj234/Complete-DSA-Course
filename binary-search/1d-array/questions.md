@@ -17,3 +17,14 @@
 
 # 7. Search Element in a Rotated Sorted Array
 `Problem Statement`: Given an integer array arr of size N, sorted in ascending order (with distinct values) and a target value k. Now the array is rotated at some pivot point unknown to you. Find the index at which k is present and if k is not present return -1.
+
+# 8. Search Element in Rotated Sorted Array II
+`Problem Statement:` Given an integer array arr of size N, sorted in ascending order (may contain duplicate values) and a target value k. Now the array is rotated at some pivot point unknown to you. Return True if k is present and otherwise, return False. 
+
+
+# 9. Minimum in Rotated Sorted Array
+`Problem Statement: `Given an integer array arr of size N, sorted in ascending order (with distinct values). Now the array is rotated between 1 to N times which is unknown. Find the minimum element in the array. 
+
+
+# 10 Find out how many times the array has been rotated
+Problem Statement: Given an integer array arr of size N, sorted in ascending order (with distinct values). Now the array is rotated between 1 to N times which is unknown. Find how many times the array has been rotated. 
