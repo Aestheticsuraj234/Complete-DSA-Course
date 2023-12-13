@@ -1,5 +1,5 @@
 // 1. Brute Force Approach
-function findMax(v: number[]): number {
+function _findMax(v: number[]): number {
   let maxi = -Infinity;
   let n = v.length;
   // Find the maximum
@@ -21,7 +21,7 @@ function calculateTotalHours(v: number[], hourly: number) {
 
 function minimumRateToEatBananas(v: number[], h: number): number {
   // Find the maximum number
-  let maxi = findMax(v);
+  let maxi = _findMax(v);
 
   // Find the minimum value of k
   for (let i = 1; i <= maxi; i++) {
@@ -44,7 +44,7 @@ console.log("Koko should eat at least " + ans + " bananas/hr.");
 
 function MinEatingRateOptimal(v: number[], h: number) {
   let low = 1,
-    high = findMax(v);
+    high = _findMax(v);
   let ans = Number.MAX_SAFE_INTEGER;
 
   while (low <= high) {
