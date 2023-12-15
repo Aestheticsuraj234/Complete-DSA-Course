@@ -40,3 +40,29 @@ Problem Statement: You are given an array ‘arr’ of size ‘n’ which denote
 You are also given an integer ‘k’ which denotes the number of aggressive cows.
 You are given the task of assigning stalls to ‘k’ cows such that the minimum distance between any two of them is the maximum possible.
 Find the maximum possible minimum distance.
+
+# 9. Allocate Minimum Number of Pages
+
+Problem Statement: Given an array ‘arr of integer numbers, ‘ar[i]’ represents the number of pages in the ‘i-th’ book. There are a ‘m’ number of students, and the task is to allocate all the books to the students.
+Allocate books in such a way that:
+
+Each student gets at least one book.
+Each book should be allocated to only one student.
+Book allocation should be in a contiguous manner.
+You have to allocate the book to ‘m’ students such that the maximum number of pages assigned to a student is minimum. If the allocation of books is not possible. return -1
+
+# 10 . Split Array – Largest Sum
+
+Problem Statement: Given an integer array ‘A’ of size ‘N’ and an integer ‘K’. Split the array ‘A’ into ‘K’ non-empty subarrays such that the largest sum of any subarray is minimized. Your task is to return the minimized largest sum of the split.
+A subarray is a contiguous part of the array.
+
+# 11. Painter’s Partition Problem
+
+Problem Statement: Given an array/list of length ‘N’, where the array/list represents the boards and each element of the given array/list represents the length of each board. Some ‘K’ numbers of painters are available to paint these boards. Consider that each unit of a board takes 1 unit of time to paint. You are supposed to return the area of the minimum time to get this job done of painting all the ‘N’ boards under the constraint that any painter will only paint the continuous sections of boards.
+
+# 12. Minimise Maximum Distance between Gas Stations
+
+Problem Statement: You are given a sorted array ‘arr’ of length ‘n’, which contains positive integer positions of ‘n’ gas stations on the X-axis. You are also given an integer ‘k’. You have to place ‘k’ new gas stations on the X-axis. You can place them anywhere on the non-negative side of the X-axis, even on non-integer positions. Let ‘dist’ be the maximum value of the distance between adjacent gas stations after adding k new gas stations.
+Find the minimum value of ‘dist’.
+
+Note: Answers within 10^-6 of the actual answer will be accepted. For example, if the actual answer is 0.65421678124, it is okay to return 0.654216. Our answer will be accepted if that is the same as the actual answer up to the 6th decimal place.
