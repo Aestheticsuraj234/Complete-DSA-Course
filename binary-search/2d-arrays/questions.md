@@ -9,3 +9,8 @@ Note: If two rows have the same number of ones, consider the one with a smaller 
 Problem Statement: You have been given a 2-D array ‘mat’ of size ‘N x M’ where ‘N’ and ‘M’ denote the number of rows and columns, respectively. The elements of each row and each column are sorted in non-decreasing order.
 But, the first element of a row is not necessarily greater than the last element of the previous row (if it exists).
 You are given an integer ‘target’, and your task is to find if it exists in the given ‘mat’ or not.
+
+
+# 4. Find Peak Element (2D Matrix)
+
+    
