@@ -4,6 +4,6 @@
 // To understand linked lists better, let’s take the help of an example:
 
 
-class MyNode<T> {
+export class MyNode<T> {
     constructor(public data: T, public next: MyNode<T> | null = null) {}
 }
