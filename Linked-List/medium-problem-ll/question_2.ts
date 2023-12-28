@@ -1,6 +1,8 @@
 // Reverse a Linked List
 // Problem Statement: Problem Statement: Given the head of a singly linked list, write a program to reverse the linked list, and return the head pointer to the reversed list.
 
+import { MyNode } from "../1d-linkedlist/intro_1";
+
 // Solution #1 - iteratively
 
 function IReverseLinkedList(
@@ -25,7 +27,7 @@ function ReverseLinkedList(head: MyNode<number> | null): MyNode<number> | null {
   }
   let newHead = ReverseLinkedList(head.next);
   let front = head.next;
-  front.next = head;
+  front!.next = head;
   head.next = null;
   return newHead;
 }

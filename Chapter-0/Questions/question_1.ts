@@ -30,3 +30,5 @@ function reverseArrayRecursive(arr: number[], start: number, end: number) {
 let arr2 = [1, 2, 3, 4, 5];
 reverseArrayRecursive(arr2, 0, arr2.length-1);
 console.log(arr2);
+
+

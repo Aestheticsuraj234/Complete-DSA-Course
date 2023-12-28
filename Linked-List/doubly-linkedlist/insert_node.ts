@@ -6,6 +6,7 @@ function InsertAtTheHead(head: DNode | null, data: number) {
   if (head !== null) {
     head.back = newHead;
   }
+  
 
   return newHead;
 }

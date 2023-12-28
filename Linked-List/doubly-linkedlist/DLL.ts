@@ -6,7 +6,7 @@ export class DNode {
     }
   }
   
-  export function ConvertArrayToDoublyLinkedList(arr: number[]) {
+ export function ConvertArrayToDoublyLinkedList(arr: number[]) {
     if (arr.length === 0) {
       return null;
     }
